@@ -2,9 +2,21 @@
 <?php
 require_once "funciones.php";
 
+// hacer inserción en la bbdd de la venta
+if(isset($_GET['cobrar'])){
+    $cod_emp = $_GET['cod_empleado'];
+    $fecha = $_GET['fecha'];
+    $consumiciones=unserialize($_GET['consumiciones']);
 
 
-$respuesta = ejecutaSQL($orden);
+
+    insertarPago($cod_emp, $fecha);
+    // insertarLineaTickets();
+}
+
+
+
+$respuesta = mostrarEmpleadosActivos();
 echo "<h2>Quien eres?</h2>";
 while ($campo = $respuesta->fetch_array()) {
     $consumiciones=array();

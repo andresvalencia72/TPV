@@ -14,7 +14,6 @@ if (isset($_GET['cod_articulo'])) {
     $nombre_art =  $_GET['nombre_art'];
     $cantidad_art = $_GET['cantidad'];
     $precio_art = $_GET['precio'];
-    var_dump($cantidad_art);
     // Compruebo si el articulo ya lo habia vendido anteriormente
     if(isset($consumiciones[$cod_art]['cantidad'])){
         $consumiciones[$cod_art]['cantidad']+=intval($cantidad_art);
@@ -30,9 +29,11 @@ if (isset($_GET['cod_articulo'])) {
 // Muestro los datos. OJO: QUITAR QUE QUEDA FEO
 echo "<h1>" . $cod_empleado . "</h1>";
 echo "<h1>" . $cod_categoria . "</h1>";
-$format = 'D, d M Y H:i:s';
+// $format = 'D, d M Y H:i:s';
 
-echo date('l jS \of F Y h:i:s A');
+$fecha = date('Y-m-d');
+echo $fecha ;
+
 // var_dump($consumiciones);
 // mostrar empleado 
 $nombre = dimeNombre($cod_empleado);
@@ -96,26 +97,31 @@ if (isset($cod_categoria)) {
 echo '<form action=index.php method=get>';
 foreach ($consumiciones as $indice => $valor) {
     echo $valor['nombre'];
-    echo '*****';
+    echo ':';
     echo $valor['cantidad'];
-    echo '*****';
+    echo ':';
     echo $valor['precio'];
     echo '<br>';
 }
-echo '<input type=submit value=cobrar>';
-echo '</form>';
+
 
 // calcular total
 $total = 0;
 // var_dump($consumiciones);
+
 foreach ($consumiciones as  $indice  => $valor) {
     
     $total += $valor['cantidad']*$valor['precio'];
     
 }
+echo "<input type=hidden name=cod_empleado value='".$cod_empleado. "'>";
+echo "<input type=hidden name=fecha value='".$fecha. "'>";
+echo "<input type=hidden name=consumiciones value='".serialize($consumiciones). "'>";
+// si se da a cobrar se entendera que fue pago por lo que el estado de activo sera 0 y si no sera 1
 echo '<h2>total: '.$total.'</h2>';
-
-
+echo '<input type=submit name=cobrar value=cobrar>';
+echo '<input type=submit name=guardar value=guardar>';
+echo '</form>';
 
 
 // hacer inserción de pago en la BD

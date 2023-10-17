@@ -43,9 +43,18 @@ function mostrarProductos($cod_tipo)
     return $resultado;
 }
 
-// function insertarPago(){
-//     $conexion = conecta();
+function insertarPago($cod_empleado,$fecha){
+    $conexion = conecta();
+    $ordenInsert="INSERT INTO `tickets` (cod_empleado, fecha, activo) values($cod_empleado,'$fecha',0)";
+    $conexion->query($ordenInsert);
+}
 
+
+
+// function insertarLineaTickets(){
+//     $conexion = conecta();
+//     $ordenInsert="INSERT INTO `liinea_ticket` (cod_empleado, fecha, activo) values($cod_empleado,'$fecha',0)";
+//     $conexion->query($ordenInsert);
 // }
 
 ?>
