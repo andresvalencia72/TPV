@@ -75,7 +75,7 @@ if (isset($cod_categoria)) {
                 <option>4</option>
             </select>';
             echo "<input type=hidden name=cod_empleado value='" . $cod_empleado . "'>";
-            echo "<input type=hidden name=cod_articulo value='" . $campo['cod_articulo'] . "'>";
+            echo "<input type=hidden name=cod_articulo value='" . $campo['cod_art'] . "'>";
             echo "<input type=hidden name=nombre_art value='" . $campo['nombre'] . "'>";
             echo "<input type=hidden name=precio value='" . $campo['precio'] . "'>";
 
