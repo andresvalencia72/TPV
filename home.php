@@ -34,7 +34,7 @@ echo "<h1>" . $cod_categoria . "</h1>";
 $fecha = date('Y-m-d');
 echo $fecha ;
 
-// var_dump($consumiciones);
+// var_dump($consumiciones[]);
 // mostrar empleado 
 $nombre = dimeNombre($cod_empleado);
 while ($campo = $nombre->fetch_array()) {
@@ -107,10 +107,9 @@ foreach ($consumiciones as $indice => $valor) {
 
 // calcular total
 $total = 0;
-// var_dump($consumiciones);
 
 foreach ($consumiciones as  $indice  => $valor) {
-    
+    // crearCodLineaTicket();    
     $total += $valor['cantidad']*$valor['precio'];
     
 }
@@ -120,7 +119,7 @@ echo "<input type=hidden name=consumiciones value='".serialize($consumiciones). 
 // si se da a cobrar se entendera que fue pago por lo que el estado de activo sera 0 y si no sera 1
 echo '<h2>total: '.$total.'</h2>';
 echo '<input type=submit name=cobrar value=cobrar>';
-echo '<input type=submit name=guardar value=guardar>';
+// echo '<input type=submit name=guardar value=guardar>';
 echo '</form>';
 
 
