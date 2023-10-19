@@ -1,3 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/css/style.css">
+    <title>Bar el Chema | Login</title>
+</head>
+
+<body>
+    <header class="navegacion">
+        <div class="wrapper ">
+            <figure class="logo">
+                <img src="img/Logo.svg" alt="logo bar el chema">
+            </figure>
+        </div>
+
+    </header>
+
+</body>
+
+</html>
+
+
 <?php
 require_once "funciones.php";
 
@@ -15,15 +40,13 @@ if (isset($_POST['cod_articulo'])) {
     $cantidad_art = $_POST['cantidad'];
     $precio_art = $_POST['precio'];
     // Compruebo si el articulo ya lo habia vendido anteriormente
-    if(isset($consumiciones[$cod_art]['cantidad'])){
-        $consumiciones[$cod_art]['cantidad']+=intval($cantidad_art);
-    }else{
+    if (isset($consumiciones[$cod_art]['cantidad'])) {
+        $consumiciones[$cod_art]['cantidad'] += intval($cantidad_art);
+    } else {
         $consumiciones[$cod_art]['nombre'] =  $nombre_art;
-        $consumiciones[$cod_art]['cantidad']=intval($cantidad_art);
-        $consumiciones[$cod_art]['precio']=$precio_art;
-
+        $consumiciones[$cod_art]['cantidad'] = intval($cantidad_art);
+        $consumiciones[$cod_art]['precio'] = $precio_art;
     }
-    
 }
 
 // Muestro los datos. OJO: QUITAR QUE QUEDA FEO
@@ -32,7 +55,7 @@ echo "<h1>" . $cod_categoria . "</h1>";
 // $format = 'D, d M Y H:i:s';
 
 $fecha = date('Y-m-d');
-echo $fecha ;
+echo $fecha;
 
 // var_dump($consumiciones[]);
 // mostrar empleado 
@@ -110,14 +133,13 @@ $total = 0;
 
 foreach ($consumiciones as  $indice  => $valor) {
     // crearCodLineaTicket();    
-    $total += $valor['cantidad']*$valor['precio'];
-    
+    $total += $valor['cantidad'] * $valor['precio'];
 }
-echo "<input type=hidden name=cod_empleado value='".$cod_empleado. "'>";
-echo "<input type=hidden name=fecha value='".$fecha. "'>";
-echo "<input type=hidden name=consumiciones value='".serialize($consumiciones). "'>";
+echo "<input type=hidden name=cod_empleado value='" . $cod_empleado . "'>";
+echo "<input type=hidden name=fecha value='" . $fecha . "'>";
+echo "<input type=hidden name=consumiciones value='" . serialize($consumiciones) . "'>";
 // si se da a cobrar se entendera que fue pago por lo que el estado de activo sera 0 y si no sera 1
-echo '<h2>total: '.$total.'</h2>';
+echo '<h2>total: ' . $total . '</h2>';
 echo '<input type=submit name=cobrar value=cobrar>';
 // echo '<input type=submit name=guardar value=guardar>';
 echo '</form>';
