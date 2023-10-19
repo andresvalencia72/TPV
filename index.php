@@ -11,15 +11,16 @@ if (isset($_GET['cobrar'])) {
 
     insertarPago($cod_emp, $fecha);
     $cod_ticket = obtenerCodTicket();
-    // print_r($cod_ticket);
+    $cod_ticket = $cod_ticket->fetch_assoc();
+    $cod_ticket = $cod_ticket['max(cod_ticket)'];
     
-    // foreach ($consumiciones as $indice => $valor) {
-    //     $cod_art = $indice;
-    //     $cantidad = $valor['cantidad'];
-    //     $precio = $valor['precio'];
-    //     insertarLineaTickets($cod_ticket,$cod_art, $cantidad,$precio);
+    foreach ($consumiciones as $indice => $valor) {
+        $cod_art = $indice;
+        $cantidad = $valor['cantidad'];
+        $precio = $valor['precio'];
+        insertarLineaTickets($cod_ticket,$cod_art, $cantidad,$precio);
 
-    // }
+    }
 }
 
 

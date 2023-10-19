@@ -55,7 +55,7 @@ function insertarPago($cod_empleado, $fecha)
 function insertarLineaTickets($cod_ticket,$cod_art, $cantidad, $precio)
 {
     $conexion = conecta();
-    $resultado = $conexion->query("INSERT INTO `linea_ticket` (cod_ticket,cod_art,cantidad,precio) values($cod_ticket,$cod_art,$cantidad,$precio)");
+    $resultado = $conexion->query("INSERT INTO `lineas_ticket` (cod_ticket,cod_art,cantidad,precio) values($cod_ticket,$cod_art,$cantidad,$precio)");
 
 }
 
