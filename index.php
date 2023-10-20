@@ -57,7 +57,7 @@ if (isset($_POST['cobrar'])) {
 
                 </label>
             </form> -->
-            
+
 
 
             <?php
@@ -66,13 +66,13 @@ if (isset($_POST['cobrar'])) {
             while ($campo = $respuesta->fetch_array()) {
                 $consumiciones = array();
                 echo "<form action=home.php method=post>";
-                echo "<label for=".$campo['cod_empleado'].">";
-            echo "<input type=image src=./img/" . $campo['cod_empleado'] . ".jpg id=".$campo['cod_empleado'].">";
-            echo "<input type=hidden name=cod_categoria value=0>";
-            echo "<input type=hidden name=consumiciones value='" . serialize($consumiciones) . "'>";
-            echo "<input type=hidden name=cod_empleado value='" . $campo['cod_empleado'] . "'>";
-            echo "<p>nombre: <span>".$campo['nombre']."</span></p>";
-            echo "</label>";
+                echo "<label for=" . $campo['cod_empleado'] . " class=tarjeta_empleados>";
+                echo "<input type=image src=./img/empleados/" . $campo['cod_empleado'] . ".jpg id=" . $campo['cod_empleado'] . " class=img_empleado>";
+                echo "<input type=hidden name=cod_categoria value=0>";
+                echo "<input type=hidden name=consumiciones value='" . serialize($consumiciones) . "'>";
+                echo "<input type=hidden name=cod_empleado value='" . $campo['cod_empleado'] . "'>";
+                echo "<p>nombre: <span>" . $campo['nombre'] . "</span></p>";
+                echo "</label>";
                 echo '</form>';
             }
 
