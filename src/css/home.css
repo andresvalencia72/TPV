@@ -1,0 +1,40 @@
+main {
+  display: grid;
+  grid-template-columns: 15% 65% 20%;
+  grid-gap: 20px;
+  height: 100vh;
+}
+
+section{
+    height: 90%;
+}
+.navegacion_left{
+    display: flex;
+    justify-content: center;
+    background-color: var(--first-color);
+    height: 90%;
+    border-radius: 0 8px 8px 0;
+}
+
+.navegacion_left img{
+    border-radius: 50%;
+    width: 100px;
+    position: relative;
+    top: -20px;
+}
+.navegacion_left figure{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.categoriasSecciones{
+    background: red;
+}
+
+.categorias{
+    height: 150px;
+}
+.productos{
+    height: 90%;
+}
