@@ -49,9 +49,9 @@ if (isset($_POST['cod_articulo'])) {
                 </svg></button>
         </div>
         <button class="add-button">
-        <span class="icon">+</span>
-        Añadir Productos
-    </button>
+            <span class="icon">+</span>
+            Añadir Productos
+        </button>
         <?php
         $fecha = date('Y-m-d');
         echo $fecha;
@@ -131,17 +131,29 @@ if (isset($_POST['cod_articulo'])) {
                         $productos = mostrarProductos($cod_categoria);
                         while ($campo = $productos->fetch_array()) {
                             echo "<div class=producto>";
-                            echo '<form action=home.php method=POST>';
-                            echo "<button type=submit>";
-                            echo "<p>" . $campo['nombre'] . "</p>";
-                            echo "<p>" . $campo["precio"] . "</p>";
-                            echo '</button>';
-                            echo '<select name=cantidad>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-            </select>';
+                            
+                            echo '<form action=home.php method=POST class=form_producto>';
+                            echo "<div class=product_img>";
+                                echo "<figure>";
+                                echo "<img src='img/productos/" . $campo['cod_art'] . ".png'>";
+                                echo "</figure>";
+                            echo "</div>";
+
+                            
+                            echo "<div>";
+
+                                echo '<select name=cantidad>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                    </select>';
+                                echo "<button type=submit>";
+                                echo "<p>" . $campo['nombre'] . "</p>";
+                                echo "<p>" . $campo["precio"] . "</p>";
+                                echo '</button>';
+                            echo "</div>";
+
                             echo "<input type=hidden name=cod_empleado value='" . $cod_empleado . "'>";
                             echo "<input type=hidden name=cod_articulo value='" . $campo['cod_art'] . "'>";
                             echo "<input type=hidden name=nombre_art value='" . $campo['nombre'] . "'>";
