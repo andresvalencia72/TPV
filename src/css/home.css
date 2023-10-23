@@ -227,7 +227,8 @@ input[type="submit"] {
     margin-left: 5px;
 }
 .resumenTotal_producto figure{
-    max-width: 50px;
+    min-width: 50px;
+    max-width: 70px;
     
 }
 .resumenTotal_producto img{
