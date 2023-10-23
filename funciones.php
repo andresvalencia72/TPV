@@ -59,6 +59,19 @@ function insertarLineaTickets($cod_ticket,$cod_art, $cantidad, $precio)
 
 }
 
+function insertarProductos($nombre, $precio, $cod_tipo, $activo) {
+    $conexion = conecta();
+    $orden = "INSERT INTO `articulos` (nombre, precio, cod_tipo, activo) VALUES ('$nombre', $precio, $cod_tipo, $activo)";
+    $resultado = $conexion->query($orden);
+
+    // Verificar si la inserción fue exitosa
+    if ($resultado) {
+        echo "Producto registrado con éxito.";
+    } else {
+        echo "Error al registrar el producto: " . $conexion->error;
+    }
+}
+
 function obtenerCodTicket()
 {
     $conexion = conecta();

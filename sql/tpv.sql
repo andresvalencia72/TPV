@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-10-2023 a las 19:55:33
+-- Tiempo de generación: 23-10-2023 a las 17:29:14
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.0.28
 
@@ -44,7 +44,12 @@ INSERT INTO `articulos` (`cod_art`, `nombre`, `precio`, `cod_tipo`, `activo`) VA
 (2, 'Fanta-Loca', 1.25, 1, 1),
 (3, 'Café solo', 1, 4, 1),
 (4, 'Vinito', 5, 2, 1),
-(5, 'Tortillita de patatas CON CEBOLLA', 1.2, 3, 1);
+(5, 'Tortillita de patatas CON CEBOLLA', 1.2, 3, 1),
+(6, 'Pepsi', 1.2, 1, 1),
+(7, 'Red Bull', 2.59, 1, 1),
+(8, 'Aquarius ', 1.2, 1, 1),
+(9, 'Schweppes', 2.59, 1, 1),
+(10, 'Nestea té verde sabor maracuyá', 2.59, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -164,7 +169,8 @@ INSERT INTO `tipos` (`cod_tipo`, `tipo`, `activo`) VALUES
 (1, 'Refrescos', 1),
 (2, 'Alcohol', 1),
 (3, 'Tapas', 1),
-(4, 'café', 1);
+(4, 'café', 1),
+(5, 'Hamburguesas', 1);
 
 --
 -- Índices para tablas volcadas
