@@ -178,7 +178,7 @@ if (isset($_POST['cod_articulo'])) {
         <section class="resumenTotal">
             <?php
             $total = 0;
-
+            echo '<form action=index.php method=POST class = form_resumen>';
             echo "<input type=hidden name=cod_empleado value='" . $cod_empleado . "'>";
             echo "<input type=hidden name=fecha value='" . $fecha . "'>";
             echo "<input type=hidden name=consumiciones value='" . serialize($consumiciones) . "'>";
@@ -186,26 +186,26 @@ if (isset($_POST['cod_articulo'])) {
             foreach ($consumiciones as $indice => $valor) {
 
                 echo "<div class=resumenTotal_producto>";
-                
-                
+
+
                 echo "<div class=resumenTotal_producto--item>";
                 echo "<figure>";
                 echo "<img src=img/productos/" . $indice . ".png alt=producto>";
                 echo "</figure>";
                 echo "<p>" . $valor['nombre'] . "</p>";
-                echo "<p>".$valor['precio']."</p>";
+                echo "<p>" . $valor['precio'] . "</p>";
 
-                
+
                 echo "<div class=resumenTotal_producto--cantidad>";
                 echo $valor['cantidad'];
 
                 echo "</div> ";
                 echo "</div>";
-                
 
-                
-                
-                
+
+
+
+
                 echo "</div>";
             }
             // si se da a cobrar se entendera que fue pago por lo que el estado de activo sera 0 y si no sera 1
@@ -217,12 +217,23 @@ if (isset($_POST['cod_articulo'])) {
             }
             echo '<h2>total: ' . $total . '</h2>';
             echo '<input type=submit name=cobrar value=cobrar>';
-            echo '<input type=submit name=imprimir value=imprimir>';
-            echo '<input type=submit name=reservar value=reservar>';
+
             // echo '<input type=submit name=guardar value=guardar>';
             echo '</form>';
 
+            echo "<form action=imprimir.php class=imprimir method=post >";
+            echo "<input type=hidden name=consumiciones value='" . serialize($consumiciones) . "'>";
+            echo '<input type=submit name=imprimir value=imprimir>';
+            
+            echo "</form>";
 
+            echo "<form action=home.php method=post class=reservar>";
+            echo '<input type=submit name=reservar value=reservar>';
+            echo "</form>";
+
+            ?>
+
+            <?php
 
             ?>
         </section>

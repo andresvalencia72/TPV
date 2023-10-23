@@ -201,7 +201,9 @@ input[type="submit"] {
     width: 80px;
     height: 30px;
 }
-
+.resumenTotal{
+    overflow: scroll;
+}
 .resumenTotal_producto{
     height: 88px;
     width: 100%;
@@ -238,4 +240,10 @@ input[type="submit"] {
     margin-bottom: 5px;
     width: 100%;
 }
+
+.form_resumen{
+    display: block;
+}
+
+
 
