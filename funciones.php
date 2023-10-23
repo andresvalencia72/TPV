@@ -43,9 +43,27 @@ function mostrarProductos($cod_tipo)
     return $resultado;
 }
 
-// function insertarPago(){
-//     $conexion = conecta();
+function insertarPago($cod_empleado, $fecha)
+{
+    $conexion = conecta();
+    $ordenInsert = "INSERT INTO `tickets` (cod_empleado, fecha, activo) values($cod_empleado,'$fecha',0)";
+    $conexion->query($ordenInsert);
+}
 
-// }
+
+
+function insertarLineaTickets($cod_ticket,$cod_art, $cantidad, $precio)
+{
+    $conexion = conecta();
+    $resultado = $conexion->query("INSERT INTO `lineas_ticket` (cod_ticket,cod_art,cantidad,precio) values($cod_ticket,$cod_art,$cantidad,$precio)");
+
+}
+
+function obtenerCodTicket()
+{
+    $conexion = conecta();
+    $resultado = $conexion->query("SELECT max(cod_ticket) from tickets");
+    return $resultado;
+}
 
 ?>
