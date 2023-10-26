@@ -23,6 +23,7 @@ if (isset($_POST['cobrar'])) {
     }
 }
 
+
 ?>
 
 <!DOCTYPE html>
@@ -47,18 +48,6 @@ if (isset($_POST['cobrar'])) {
 
     <main>
         <section class="empleados">
-            <!-- generar un article por cada empleado -->
-
-
-            <!-- <form action="home.php">
-                <label for="empleado">
-                    <input type="image" src="img/1.jpg" id="empleado">
-                    <p>nombre: <span>Chema</span></p>
-
-                </label>
-            </form> -->
-
-
 
             <?php
 
@@ -77,6 +66,14 @@ if (isset($_POST['cobrar'])) {
             }
 
             ?>
+        </section>
+
+        <section class="jefe">
+            <form action="jefe.php" method=post>
+                <label for="">jefe:</label>
+                <input type="password" name=password>
+                <input type="submit" name="jefe" value=entrar>
+            </form>
         </section>
 
     </main>
