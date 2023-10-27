@@ -52,14 +52,15 @@ function insertarPago($cod_empleado, $fecha)
 
 
 
-function insertarLineaTickets($cod_ticket,$cod_art, $cantidad, $precio)
+function insertarLineaTickets($cod_ticket, $cod_art, $cantidad, $precio)
 {
     $conexion = conecta();
     $resultado = $conexion->query("INSERT INTO `lineas_ticket` (cod_ticket,cod_art,cantidad,precio) values($cod_ticket,$cod_art,$cantidad,$precio)");
 
 }
 
-function insertarProductos($nombre, $precio, $cod_tipo, $activo) {
+function insertarProductos($nombre, $precio, $cod_tipo, $activo)
+{
     $conexion = conecta();
     $orden = "INSERT INTO `articulos` (nombre, precio, cod_tipo, activo) VALUES ('$nombre', $precio, $cod_tipo, $activo)";
     $resultado = $conexion->query($orden);
@@ -76,6 +77,14 @@ function obtenerCodTicket()
 {
     $conexion = conecta();
     $resultado = $conexion->query("SELECT max(cod_ticket) from tickets");
+    return $resultado;
+}
+
+function buscarProductosFechas($fecha_inicio, $fecha_fin)
+{
+    $conexion = conecta();
+    $resultado = $conexion->query("SELECT cod_ticket, cod_empleado, fecha,activo from tickets
+    where fecha between '$fecha_inicio' and '$fecha_fin'");
     return $resultado;
 }
 

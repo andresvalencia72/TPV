@@ -1,17 +1,39 @@
 <?php
+require_once("funciones.php");
+$ventas = array();
 if (isset($_POST['jefe'])) {
     $contrasenia = $_POST['password'];
     if ($contrasenia == 'patata') {
         mostrarPanel();
     } else {
-        echo 'incorrecta';
+        header('Location:index.php');
     }
+}
+
+if(isset($_POST['fecha'])) {
+    $fecha_inicio = $_POST['fecha_inicio'];
+    $fecha_fin = $_POST['fecha_fin'];
+    $ventas = buscarProductosFechas($fecha_inicio, $fecha_fin);
+   //  var_dump($ventas);
+   while($valor = $ventas -> fetch_array()) {
+      echo  ''.$valor[2];
+   }
 }
 
 function mostrarPanel()
 {
     echo "
-    <a href=index.php>SALIR</a><form name=f1 method=POST action=administrador.php><input type=hidden name=clave value=patata>Dia: <input type=date name=fecha value='2023-10-26' onchange='this.form.submit()'></form><h2>Caja del dia 2023-10-26</h2><table border=1><tr><th>Concepto</th><th>DIA</th><th>MES</th><th>AÑO</th><th>POR DIAS</th><th>POR MESES</th><th>POR AÑOS</th></tr><tr><td>Articulo</td><td valign=top><table><tr><th>Articulo</th><th>Cant</th><th>Caja</th></tr></table></td><td valign=top><table><tr><th>Articulo</th><th>Cant</th><th>Caja</th></tr><tr><td>Calimocho</td><td align=right>99</td><td align=right>297.00€</td></tr><tr><td>Cubata</td><td align=right>87</td><td align=right>217.50€</td></tr><tr><td>Caña</td><td align=right>89</td><td align=right>97.90€</td></tr><tr><td>Tortilla</td><td align=right>65</td><td align=right>97.50€</td></tr><tr><td>Café solo</td><td align=right>63</td><td align=right>75.60€</td></tr><tr><td>Coronita</td><td align=right>42</td><td align=right>63.00€</td></tr><tr><td>Café con leche</td><td align=right>30</td><td align=right>39.00€</td></tr><tr><td>Aguila</td><td align=right>15</td><td align=right>16.50€</td></tr><tr><td>Heineken</td><td align=right>10</td><td align=right>15.00€</td></tr><tr><td>Mahou</td><td align=right>13</td><td align=right>14.30€</td></tr></table></td><td valign=top><table><tr><th>Articulo</th><th>Cant</th><th>Caja</th></tr><tr><td>Calimocho</td><td align=right>102</td><td align=right>306.00€</td></tr><tr><td>Cubata</td><td align=right>88</td><td align=right>220.00€</td></tr><tr><td>Caña</td><td align=right>89</td><td align=right>97.90€</td></tr><tr><td>Tortilla</td><td align=right>65</td><td align=right>97.50€</td></tr><tr><td>Café solo</td><td align=right>63</td><td align=right>75.60€</td></tr><tr><td>Coronita</td><td align=right>42</td><td align=right>63.00€</td></tr><tr><td>Café con leche</td><td align=right>31</td><td align=right>40.30€</td></tr><tr><td>Aguila</td><td align=right>18</td><td align=right>19.80€</td></tr><tr><td>Heineken</td><td align=right>10</td><td align=right>15.00€</td></tr><tr><td>Mahou</td><td align=right>13</td><td align=right>14.30€</td></tr></table></td><td  valign=top rowspan=3><table><tr><th>Dia</th><th>CAJA</th></tr><tr><td align=center>4</td><td align=right>910.40€</td></tr><tr><td align=center>5</td><td align=right>10.00€</td></tr><tr><td align=center>11</td><td align=right>9.10€</td></tr><tr><td align=center>18</td><td align=right>3.80€</td></tr></table><b>TOTAL: 933.30</b></td><td  valign=top rowspan=3><table><tr><th>Mes</th><th>CAJA</th></tr><tr><td align=center>10</td><td align=right>933.30€</td></tr></table><b>TOTAL: 933.30</b></td><td  valign=top rowspan=3><table><tr><th>Año</th><th>CAJA</th></tr><tr><td align=center>2023</td><td align=right>933.30€</td></tr></table><b>TOTAL: 933.30</b></td></tr><tr><td>Empleado</td><td valign=top><table><tr><th>Empleado</th><th>Caja</th></tr></table></td><td valign=top><table><tr><th>Empleado</th><th>Caja</th></tr><tr><td>Luis</td><td align=right>504.00€</td></tr><tr><td>Pepe</td><td align=right>429.30€</td></tr></table></td><td valign=top><table><tr><th>Empleado</th><th>Caja</th></tr><tr><td>Luis</td><td align=right>515.50€</td></tr><tr><td>Pepe</td><td align=right>433.90€</td></tr></table></td></tr><tr><td>CAJA</td><td  valign=top align=center><b>0.00€</b></td><td  valign=top align=center><b>933.30€</b></td><td  valign=top align=center><b>949.40€</b></td></tr></table>";
+    <a href=index.php>SALIR</a>
+    <form method=post action=jefe.php>
+        <label>Desde:</label>
+        <input type=date name=fecha_inicio>
+        <label>Hasta:</label>  
+        <input type=date name=fecha_fin>
+        <input type=submit name=fecha>
+    </form>";
+
+    
+
 }
 
 

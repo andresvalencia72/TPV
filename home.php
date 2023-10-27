@@ -48,7 +48,9 @@ if (isset($_POST['cod_articulo'])) {
     <header>
         <div class="wrapper ">
             <figure class="logo">
-                <img src="img/Logo.svg" alt="logo bar el chema">
+                <a href="index.php">
+                    <img src="img/Logo.svg" alt="logo bar el chema">
+                </a>
             </figure>
         </div>
         <div class="search-container">
@@ -59,9 +61,9 @@ if (isset($_POST['cod_articulo'])) {
                     </svg>
                 </button>
                 <?php
-                 echo "<input type=hidden name=cod_empleado value='" . $cod_empleado . "'>";
-                 echo "<input type=hidden name=cod_categoria value=0>";
-                 echo "<input type=hidden name=consumiciones value='" . serialize($consumiciones) . "'>";
+                echo "<input type=hidden name=cod_empleado value='" . $cod_empleado . "'>";
+                echo "<input type=hidden name=cod_categoria value=0>";
+                echo "<input type=hidden name=consumiciones value='" . serialize($consumiciones) . "'>";
                 ?>
             </form>
 
@@ -142,7 +144,7 @@ if (isset($_POST['cod_articulo'])) {
             <article class="productos">
                 <?php
                 //mostrar productos por categoría
-
+                
                 $productos = mostrarProductos($cod_categoria);
 
 
@@ -182,7 +184,7 @@ if (isset($_POST['cod_articulo'])) {
                             echo "<input type=hidden name=cod_categoria value='" . $cod_categoria . "'>";
                             echo "<input type=hidden name=consumiciones value='" . serialize($consumiciones) . "'>";
                             // echo "<input type=hidden name=cantidad>";
-
+                
                             echo '</form>';
                             echo "</div>";
                         }
@@ -229,7 +231,7 @@ if (isset($_POST['cod_articulo'])) {
                 echo "</div>";
             }
             // si se da a cobrar se entendera que fue pago por lo que el estado de activo sera 0 y si no sera 1
-
+            
             // calcular el precio total de la venta
             foreach ($consumiciones as $indice => $valor) {
                 // crearCodLineaTicket();    

@@ -40,7 +40,10 @@ if (isset($_POST['cobrar'])) {
     <header class="navegacion">
         <div class="wrapper ">
             <figure class="logo">
-                <img src="img/Logo.svg" alt="logo bar el chema">
+                <a href="index.php">
+
+                    <img src="img/Logo.svg" alt="logo bar el chema">
+                </a>
             </figure>
         </div>
 
