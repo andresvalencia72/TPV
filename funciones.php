@@ -83,8 +83,8 @@ function obtenerCodTicket()
 function buscarProductosFechas($fecha_inicio, $fecha_fin)
 {
     $conexion = conecta();
-    $resultado = $conexion->query("SELECT cod_ticket, cod_empleado, fecha,activo from tickets
-    where fecha between '$fecha_inicio' and '$fecha_fin'");
+    $orden = "SELECT * FROM tickets t, lineas_ticket lt, articulos a WHERE t.cod_ticket = lt.cod_ticket AND lt.cod_art = a.cod_art AND t.fecha BETWEEN '$fecha_inicio' AND '$fecha_fin' GROUP BY a.nombre;";
+    $resultado = $conexion->query($orden);
     return $resultado;
 }
 

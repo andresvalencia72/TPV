@@ -10,14 +10,18 @@ if (isset($_POST['jefe'])) {
     }
 }
 
-if(isset($_POST['fecha'])) {
+if (isset($_POST['fecha'])) {
     $fecha_inicio = $_POST['fecha_inicio'];
     $fecha_fin = $_POST['fecha_fin'];
     $ventas = buscarProductosFechas($fecha_inicio, $fecha_fin);
-   //  var_dump($ventas);
-   while($valor = $ventas -> fetch_array()) {
-      echo  ''.$valor[2];
-   }
+    //  var_dump($ventas);
+    foreach ($ventas as $key => $value) {
+        echo "<tr>";
+        echo "<td>" . $value['nombre'] . "</td>";
+        echo "<td>" . $value['cantidad'] . "</td>";
+        // echo "<td>" . $value[2] . "</td>";
+        echo "</tr>";
+    }
 }
 
 function mostrarPanel()
@@ -32,7 +36,7 @@ function mostrarPanel()
         <input type=submit name=fecha>
     </form>";
 
-    
+
 
 }
 
